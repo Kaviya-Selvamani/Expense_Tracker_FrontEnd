@@ -24,7 +24,7 @@ function Expensecontainer() {
 
   async function addExpense(title, amount) {
     try{
-      const newExpense = await fetch('https://expense-tracker-backend-1-sf1w.onrender.com/post', {  
+      const newExpense = await fetch('http://localhost:4500/post', {  
       method: 'POST',
       headers: {'Content-Type': 'application/json',},
       body: JSON.stringify({ title, amount }),
@@ -40,7 +40,7 @@ function Expensecontainer() {
 }
 
 async function deleteExpense(id) {
-  await fetch(`https://expense-tracker-backend-1-sf1w.onrender.com/delete/${id}`, {
+  await fetch(`http://localhost:4500/delete/${id}`, {
     method: "DELETE"
   });
   setExpense(Expense.filter((item) => item.id !== id))
@@ -50,7 +50,7 @@ async function deleteExpense(id) {
 
 async function getExpense(){
   try{
-  const response = await fetch('https://expense-tracker-backend-1-sf1w.onrender.com/get');
+  const response = await fetch('http://localhost:4500/get');
   const data = await response.json();
   setExpense(data.expenses);
   }
